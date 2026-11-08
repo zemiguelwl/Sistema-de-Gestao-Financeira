@@ -19,7 +19,7 @@ flowchart LR
 1. **Telegram**: envio uma mensagem ao bot, com uma transação por linha.
 2. **Make.com**: um cenário de 4 módulos recebe a mensagem, divide-a em linhas e escreve cada linha no separador Histórico, sem a alterar.
 3. **Google Sheets**: o separador Data calcula, com fórmulas, o valor, a palavra, a categoria, o tipo e o mês. O Mapeamento diz a que categoria pertence cada palavra. O Dashboard resume o mês.
-4. **Looker Studio**: um relatório visual ligado à tab Data, que também uso no telemóvel.
+4. **Data Studio**: um relatório visual ligado à tab Data, que também uso no telemóvel.
 
 ![Cenário do Make com os quatro módulos](imagens/cenario-make.png)
 
@@ -52,7 +52,7 @@ Todas as capturas usam dados fictícios.
 - **Telegram Bot API** (bot criado com o BotFather): a interface de entrada.
 - **Make.com**: a automação que liga o Telegram ao Google Sheets.
 - **Google Sheets**: armazenamento e processamento, com `ARRAYFORMULA` e expressões regulares (`REGEXEXTRACT`, `REGEXREPLACE`, `REGEXMATCH`).
-- **Looker Studio**: relatório e visualização.
+- **Data Studio**: relatório e visualização.
 
 ## Estrutura do repositório
 
@@ -99,4 +99,4 @@ Resumo dos problemas mais relevantes. O sintoma, a causa e a solução de cada u
 
 ## Summary (English)
 
-A personal expense tracker driven by Telegram messages. I send `-2,50 cafe` to a Telegram bot; a four-module Make.com scenario splits the message into lines and appends each one, unchanged, to a Google Sheets tab. Array formulas then extract the amount, normalise the keyword, look up its category in a mapping table and feed a monthly dashboard and a Looker Studio report. The repository includes a step-by-step setup guide, every formula explained (Portuguese and English locale versions), the cleaned Make blueprint, a template spreadsheet with fictitious data, and a write-up of the problems I hit, most of them caused by locale and data format differences between tools. Documentation is in Portuguese.
+A personal expense tracker driven by Telegram messages. I send `-2,50 cafe` to a Telegram bot; a four-module Make.com scenario splits the message into lines and appends each one, unchanged, to a Google Sheets tab. Array formulas then extract the amount, normalise the keyword, look up its category in a mapping table and feed a monthly dashboard and a Data Studio report. The repository includes a step-by-step setup guide, every formula explained (Portuguese and English locale versions), the cleaned Make blueprint, a template spreadsheet with fictitious data, and a write-up of the problems I hit, most of them caused by locale and data format differences between tools. Documentation is in Portuguese.
