@@ -1,0 +1,96 @@
+{
+  "name": "Registo de despesas: Telegram para Google Sheets",
+  "flow": [
+    {
+      "id": 1,
+      "module": "telegram:WatchUpdates",
+      "version": 1,
+      "parameters": {
+        "__IMTHOOK__": "<TELEGRAM_WEBHOOK>"
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "util:SetVariable2",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "name": "linhas",
+        "value": "{{split(1.message.text; newline)}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "builtin:BasicFeeder",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "array": "{{2.linhas}}"
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 7,
+      "module": "google-sheets:addRow",
+      "version": 2,
+      "parameters": {
+        "__IMTCONN__": "<GOOGLE_CONNECTION>"
+      },
+      "mapper": {
+        "mode": "map",
+        "values": {
+          "0": "{{now}}",
+          "1": "{{3.value}}"
+        },
+        "sheetId": "Histórico",
+        "spreadsheetId": "<SPREADSHEET_ID>",
+        "tableFirstRow": "A1:Z1",
+        "insertDataOption": "INSERT_ROWS",
+        "valueInputOption": "RAW",
+        "insertUnformatted": false
+      },
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 0
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    }
+  }
+}

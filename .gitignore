@@ -1,0 +1,13 @@
+# Exportações da folha real (podem ter dados pessoais)
+*.xlsx
+!sheets/modelo.xlsx
+~$*
+
+# Segredos
+.env
+*.token
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
